@@ -1,0 +1,20 @@
+{
+  "name": "cron-perplexity",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Swagat Swaroop Parida",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@api/ondemand-ai": "file:.api/apis/ondemand-ai",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.20.0",
+    "ioredis": "^5.4.1",
+    "node-cron": "^3.0.3"
+  }
+}
