@@ -9,7 +9,7 @@ const { redis } = require("./redis/redis.js");
 const app = express();
 
 // cron.schedule
-cron.schedule("* * * * * *", async () => {
+cron.schedule("0 * * * *", async () => {
   try {
     const answer = await getNewsChat();
     console.log("Got answer");
