@@ -9,11 +9,23 @@ const { redis } = require("./redis/redis.js");
 const app = express();
 
 // cron.schedule
-cron.schedule("0 * * * *", async () => {
+cron.schedule("* * * * * *", async () => {
   try {
     const answer = await getNewsChat();
     console.log("Got answer");
-    await setRedisCache(answer);
+    const jsonStart = answer.indexOf("{");
+    const jsonEnd = answer.lastIndexOf("}");
+
+    // Extract the JSON part
+    const jsonString = answer.slice(jsonStart, jsonEnd + 1);
+
+    try {
+      const jsonData = JSON.parse(jsonString);
+      console.log("Able to parse to json \n", jsonData);
+      await setRedisCache(jsonString);
+    } catch (error) {
+      console.log("Unable to parse JSON data");
+    }
   } catch (error) {
     console.log("Failed to get answer ", error.message);
   }
@@ -34,8 +46,7 @@ cron.schedule("40 0 * * *", async () => {
 app.get("/getnews", async (_, res) => {
   try {
     const response = await getRedisCache();
-    const cleanedResponse = response.replace(/```json|```/g, "").trim();
-    const jsonResponse = JSON.parse(cleanedResponse);
+    const jsonResponse = JSON.parse(response);
     return res
       .status(200)
       .json({ data: jsonResponse, message: "Data sent Successfully" });
