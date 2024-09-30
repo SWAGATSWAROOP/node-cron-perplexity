@@ -40,7 +40,7 @@ const getNewsChat = async () => {
       onlyFulfillment: true,
       modelConfigs: {
         fulfillmentPrompt:
-          "Question: {question} and Context: {context} Give me brief answer, images and source urls of the query in json format having key answers,images,sources",
+          "Question: {question} and Context: {context} Give answer in json format like image,source and title of news all together in form array,if any parameter is missing skip it.",
       },
       endpointId: "predefined-openai-gpt4o",
     },

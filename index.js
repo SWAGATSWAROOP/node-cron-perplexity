@@ -13,8 +13,8 @@ cron.schedule("0 * * * *", async () => {
   try {
     const answer = await getNewsChat();
     console.log("Got answer");
-    const jsonStart = answer.indexOf("{");
-    const jsonEnd = answer.lastIndexOf("}");
+    const jsonStart = answer.indexOf("[");
+    const jsonEnd = answer.lastIndexOf("]");
 
     // Extract the JSON part
     const jsonString = answer.slice(jsonStart, jsonEnd + 1);
