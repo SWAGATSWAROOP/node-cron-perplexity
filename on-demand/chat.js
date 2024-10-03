@@ -35,7 +35,7 @@ const getNewsChat = async () => {
     },
     data: {
       responseMode: "sync",
-      query: "Give 5 postive news in the Middle East Region",
+      query: "Give 5 postive news in the Middle East Region about business and technology.",
       pluginIds: ["plugin-1722260873"],
       onlyFulfillment: true,
       modelConfigs: {
