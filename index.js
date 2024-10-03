@@ -22,9 +22,22 @@ cron.schedule("0 * * * *", async () => {
     try {
       const jsonData = JSON.parse(jsonString);
       console.log("Able to parse to json \n", jsonData);
-      await setRedisCache(jsonString);
+
+      // Check if any "example.com" exists in the URLs
+      const containsExampleDotCom = jsonData.some(
+        (item) =>
+          item.image_url.includes("example.com") ||
+          item.source_url.includes("example.com")
+      );
+
+      if (!containsExampleDotCom) {
+        await setRedisCache(jsonString);
+        console.log("Data cached successfully");
+      } else {
+        console.log("Data contains example.com, not caching");
+      }
     } catch (error) {
-      console.log("Unable to parse JSON data");
+      console.log("Unable to parse JSON data", error);
     }
   } catch (error) {
     console.log("Failed to get answer ", error.message);
