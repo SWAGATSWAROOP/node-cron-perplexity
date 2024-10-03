@@ -35,12 +35,13 @@ const getNewsChat = async () => {
     },
     data: {
       responseMode: "sync",
-      query: "Give 5 postive news in the Middle East Region about business and technology.",
+      query:
+        "Provide 5 positive business and technology news updates from the Middle East.",
       pluginIds: ["plugin-1722260873"],
       onlyFulfillment: true,
       modelConfigs: {
         fulfillmentPrompt:
-          "Question: {question} and Context: {context} Give answer in json format like image_url,source_url and title of news all together in form array,all image url and source_url should be unique and shouldn't be dummy in the array.",
+          "Question: {question} and Context: {context} Provide the answer in JSON format with image_url,source_url,and title for each news item, all in an array. Ensure all URLs are unique and real.",
       },
       endpointId: "predefined-openai-gpt4o",
     },
