@@ -41,7 +41,7 @@ const getNewsChat = async () => {
       onlyFulfillment: true,
       modelConfigs: {
         fulfillmentPrompt:
-          "Question: {question} and Context: {context} Provide the answer in JSON format with image_url,source_url,title and description for each news item, all in an array. Ensure all URLs are unique and real.",
+          "Question: {question} and Context: {context} Provide the answer in JSON format with image_url,source_url,title and description for each news item, all in an array.Ensure all URLs are unique and real.",
       },
       endpointId: "predefined-openai-gpt4o",
     },
