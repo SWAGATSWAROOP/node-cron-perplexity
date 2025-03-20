@@ -24,7 +24,10 @@ async function getChatSession() {
 
 const getNewsChat = async () => {
   const sessionid = await redis.get("sessionid");
-
+  const date = new Date();
+  // const month  = date.toLocaleString("default",{month : 'long'});
+  const curr_year = date.getFullYear();
+  const prev_year = curr_year - 1;
   const options = {
     method: "POST",
     url: `https://api.on-demand.io/chat/v1/sessions/${sessionid}/query`,
@@ -35,8 +38,7 @@ const getNewsChat = async () => {
     },
     data: {
       responseMode: "sync",
-      query:
-        "Provide 5 positive business and technology news updates from the Middle East.",
+      query: `Provide 5 positive news updates from the Middle East in the year ${curr_year} and ${prev_year} and shouldn't include political news.`,
       pluginIds: ["plugin-1722260873"],
       onlyFulfillment: true,
       modelConfigs: {
