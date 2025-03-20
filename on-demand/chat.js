@@ -38,7 +38,7 @@ const getNewsChat = async () => {
     },
     data: {
       responseMode: "sync",
-      query: `Provide 5 positive news updates from the Middle East in the year ${curr_year} and ${prev_year} and shouldn't include political news.`,
+      query: `Provide 5 positive news updates from the Middle East in the year ${curr_year} and ${prev_year} about sports, buisness, AI, BlockChain and technology`,
       pluginIds: ["plugin-1722260873"],
       onlyFulfillment: true,
       modelConfigs: {
