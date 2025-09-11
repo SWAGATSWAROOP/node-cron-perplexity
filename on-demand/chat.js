@@ -38,14 +38,14 @@ const getNewsChat = async () => {
     },
     data: {
       responseMode: "sync",
-      query: `Provide 5 positive news updates from the Middle East in the year ${curr_year} and ${prev_year} about sports, buisness, AI, BlockChain and technology`,
+      query: `Get latest positive news about UAE from verified news sources. Focus on achievements, developments, cultural events, economic growth, sustainability initiatives, technological advancements, education, healthcare improvements, and community success stories. Exclude any news related to gambling, casinos, betting, or controversial topics.`,
       pluginIds: ["plugin-1722260873"],
       onlyFulfillment: true,
       modelConfigs: {
         fulfillmentPrompt:
           "Question: {question} and Context: {context} Provide the answer in JSON format with image_url,source_url,title and description for each news item, all in an array.Ensure all URLs are unique and real.",
       },
-      endpointId: "predefined-openai-gpt4o",
+      endpointId:"predefined-openai-gpt4.1-nano",
     },
   };
 
